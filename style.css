@@ -6,28 +6,34 @@
 }
 
 body {
-  background: #750e0e;
+  background: #750e0e url('seigaiha.png') fixed;
   font-family: "Book Antiqua", Palatino, serif;
 }
 
 div#wrapper {
   width: 980px;
-  margin: 30px auto 0;
+  max-width: 80%;
+  margin: 30px auto;
   padding: 20px;
-  background: rgba(255,253,221,.8);
+  background: rgba(255,253,221,.75);
   border-radius: 15px;
 }
 
 h1, h2 {
+  color: #750e0e;
   font-family: Candara, "Trebuchet MS", sans-serif;
-  padding-bottom: 20px;
 }
 
 h1 {
-  font-size: 3.5em;
+  font-size: 3.4em;
+  line-height: 1em;
+  padding-bottom: 20px;
 }
+
 h2 {
   font-size: 2em;
+  line-height: 1em;
+  padding-bottom: 15px;
 }
 
 div#line {
@@ -39,9 +45,25 @@ div#line {
 p, li {
   font-size: 1.2em;
   padding-bottom: 14px;
+  line-height: 1.4em;
+}
+
+li {
+  margin-left: 10px;
 }
 
 li img {
-  height: 1em;
-  vertical-align: -10%;
+  height: 1.2em;
+  margin: 5px;
+  vertical-align: -35%;
+}
+
+a {
+  text-decoration: none;
+  color: #750e0e;
+  font-style: italic;
+}
+
+a:hover {
+  text-decoration: underline;
 }
