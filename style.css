@@ -14,17 +14,34 @@ div#wrapper {
   width: 980px;
   margin: 30px auto 0;
   padding: 20px;
-  background: #fff;
+  background: rgba(255,253,221,.8);
+  border-radius: 15px;
 }
 
 h1, h2 {
   font-family: Candara, "Trebuchet MS", sans-serif;
+  padding-bottom: 20px;
 }
 
-p {
-  font-size: 1em;
+h1 {
+  font-size: 3.5em;
+}
+h2 {
+  font-size: 2em;
+}
+
+div#line {
+  width: 80%;
+  margin: 20px auto;
+  border: 1px #fff6dd inset;
+}
+
+p, li {
+  font-size: 1.2em;
+  padding-bottom: 14px;
 }
 
 li img {
   height: 1em;
+  vertical-align: -10%;
 }
