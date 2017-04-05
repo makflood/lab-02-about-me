@@ -12,57 +12,24 @@ var checkInput = function(input) {
   }
 };
 
-var alive;
-do {
-  alive = checkInput(prompt('Am I alive?'));
-  console.log('alive:', alive);
-} while (typeof alive != 'boolean')
-if (alive) {
-  alert('Affirmative, I am a living creature.');
-} else {
-  alert('Negative, I am not a computer...');
-}
+/**
+Takes the question to be asked in a prompt, the answer for a response of 'yes', and the answer for a response of 'no'. Asks the question until the 'OK' button is pressed. Prints the user response as a boolean or null to the console. Responds to the user with the given answer in an alert. Returns nothing.
+**/
+var askQuestion = function(question, yesAns, noAns) {
+  var response;
+  do {
+    response = checkInput(prompt(question));
+    console.log(question, response);
+  } while (typeof response != 'boolean')
+  if (response) {
+    alert(yesAns);
+  } else {
+    alert(noAns);
+  }
+};
 
-var mammal;
-do {
-  mammal = checkInput(prompt('Am I a mammal?'));
-  console.log('mammal:', mammal);
-} while (typeof mammal != 'boolean')
-if (mammal) {
-  alert('I am indeed a mammal.');
-} else {
-  alert('Not an insect...');
-}
-
-var breadbox;
-do {
-  breadbox = checkInput(prompt('Am I smaller than a breadbox?'));
-  console.log('breadbox:', breadbox);
-} while (typeof breadbox != 'boolean')
-if (!breadbox) {
-  alert('Quite a bit larger in fact.');
-} else {
-  alert('Haha, no.');
-}
-
-var female;
-do {
-  female = checkInput(prompt('Am I female?'));
-  console.log('female:', female);
-} while (typeof female != 'boolean')
-if (female) {
-  alert('Yes, indeed.');
-} else {
-  alert('Nope. Nope. Nope.');
-}
-
-var megan;
-do {
-  megan = checkInput(prompt('Am I Megan?'));
-  console.log('megan:', megan);
-} while (typeof megan != 'boolean')
-if (megan) {
-  alert('Yay, you win! :D');
-} else {
-  alert('Seriously?');
-}
+askQuestion('Am I alive?', 'Affirmative, I am a living creature.', 'Negative, I am not a computer...');
+askQuestion('Am I a mammal?', 'I am indeed a mammal.', 'Not an insect...');
+askQuestion('Am I smaller than a breadbox?', 'Haha, no.', 'Quite a bit larger in fact.');
+askQuestion('Am I female?', 'Yes, of the rare minority.', 'Nope. Nope. Nope.');
+askQuestion('Am I Megan?', 'Yay, you win! :D', 'Seriously?');
