@@ -19,7 +19,7 @@ alert('Hello, ' + printUser + '. I\'m going to ask some questions about me, try 
 var ynQuestions = [['Am I alive?', 'YES', 'Affirmative, I am a living creature.', 'Negative, I am not a computer...'],
                    ['Am I a mammal?', 'YES', 'I am indeed a mammal.', 'Not an insect...'],
                    ['Am I smaller than a breadbox?', 'NO', 'Quite a bit larger in fact.', 'Haha, no.'],
-                   ['Am I female?', 'YES', 'Yes, of the rare minority.', 'Nope. Nope. Nope.'],
+                   ['Am I female?', 'YES', 'Yes, that is correct.', 'Nope. Nope. Nope.'],
                    ['Am I Megan?', 'YES', 'Yep, that\'s my name!', 'Seriously?']];
 
 var userAns;
@@ -88,7 +88,7 @@ for (var guess = 3; guess >= 0 && isNotDone; guess--) {
         message += '\nToo bad, all out of guesses.\nIt was ' + favNum + '.';
       }
       alert(message);
-      
+
     } else {
       alert('Yay! You guessed right!');
       correctCount++;
@@ -98,3 +98,63 @@ for (var guess = 3; guess >= 0 && isNotDone; guess--) {
 }
 
 console.log('current correct answers:', correctCount);
+
+// MULTIPLE ANSWER QUESTIONS
+
+// userAns defined above
+// message defined above
+var possibleAns = ['Canada', 'Mexico', 'France', 'England', 'Wales', 'Scotland'];
+isNotDone = true; // isNotDone defined above
+
+for (var guess = 6; guess >= 0 && isNotDone; guess--) {
+  if (guess === 6) {
+    userAns = prompt('Can you guess one of the countries I have traveled to?');
+  } else {
+    userAns = prompt('What\'s another guess?');
+  }
+  console.log('user country guess:', userAns);
+  if (userAns != null && userAns != '') {
+    userAns = userAns.toUpperCase().trim();
+    for (var comp = 0; comp < possibleAns.length; comp++) {
+      if (possibleAns[comp].toUpperCase() === userAns) {
+        isNotDone = false;
+        message = 'Yep, you got one.\n I have been to ' + possibleAns[0];
+        for (var add = 1; add < possibleAns.length; add++) {
+          message += ', ' + possibleAns[add];
+        }
+        message += '.';
+        alert(message);
+        correctCount++;
+      }
+    }
+    if (isNotDone) {
+      message = 'Nope, that isn\'t one.';
+      if (guess != 0) {
+        message += '\nOnly ' + guess + ' ';
+        if (guess != 1) {
+          message += 'guesses remain.';
+        } else {
+          message += 'guess remains.';
+        }
+      } else {
+        message += '\nToo bad, all out of guesses.\n I have been to ' + possibleAns[0];
+        for (var add = 1; add < possibleAns.length; add++) {
+          message += ', ';
+          if (add === possibleAns.length - 1) {
+            message += 'and ';
+          }
+          message += possibleAns[add];
+        }
+        message += '.';
+      }
+      alert(message);
+    }
+  } else {
+    alert('You didn\'t answer the question...');
+  }
+}
+console.log('current correct answers:', correctCount);
+
+// INFORM USER OF SCORE
+
+alert();
