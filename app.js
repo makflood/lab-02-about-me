@@ -16,12 +16,12 @@ alert('Hello, ' + printUser + '. I\'m going to ask some questions about me, try 
 
 //YES AND NO QUESTIONS
 
-// yes/no question, correct answer, response to yes, response to no
-var ynQuestions = [['Am I alive?', 'YES', 'Affirmative, I am a living creature.', 'Negative, I am not a computer...'],
-                   ['Am I a mammal?', 'YES', 'I am indeed a mammal.', 'Not an insect...'],
-                   ['Am I smaller than a breadbox?', 'NO', 'Quite a bit larger in fact.', 'Haha, no.'],
-                   ['Am I female?', 'YES', 'Yes, that is correct.', 'Nope. Nope. Nope.'],
-                   ['Am I Megan?', 'YES', 'Yep, that\'s my name!', 'Seriously?']];
+// yes/no question, correct answer, response to correct answer, response to wrong answer
+var ynQuestions = [['Do I live in Chicago?', 'N', 'Right, I actually live in Seattle.', 'Nope, I call Seattle my home.'],
+                   ['Do I have any pets?', 'Y', 'I have two cats, in fact.', 'No, well I guess my two cats own me...'],
+                   ['Am I a blackbelt in karate?', 'N', 'That is correct. No karate, just know kenjutsu.', 'I don\'t know any karate, but I do know kenjutsu.'],
+                   ['Did I write a thesis about the rearrangement of a platinocyclobutane?', 'Y', 'Yep, watched atoms moving around on a screen.', 'Wrong. And yes, that is a word.'],
+                   ['Am I Megan?', 'Y', 'Yep, that\'s my name!', 'Seriously?']];
 
 var userAns;
 var question;
@@ -161,7 +161,7 @@ console.log('current correct answers:', correctCount);
 
 // INFORM USER OF SCORE
 
-message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + printUser + '!';
+message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + printUser + '! ';
 if (correctCount === questionCount) {
   message += 'Great job!';
 } else if (correctCount === questionCount - 1) {

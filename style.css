@@ -1,6 +1,5 @@
 * {
   font-weight: normal;
-  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -11,12 +10,42 @@ body {
 }
 
 div#wrapper {
-  width: 980px;
+  width: 840px;
   max-width: 80%;
   margin: 30px auto;
   padding: 20px;
   background: rgba(255,253,221,.75);
   border-radius: 15px;
+}
+
+section {
+  width: 45%;
+}
+
+aside {
+  border-radius: 15px;
+  padding: 20px;
+  margin: 0 20px 8px;
+  background: rgba(255,246,221,.5);
+  box-shadow: 2px 2px 3px #750e0e;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+div#line {
+  width: 80%;
+  margin: 20px auto;
+  border: 1px #fff6dd inset;
 }
 
 h1, h2 {
@@ -36,16 +65,18 @@ h2 {
   padding-bottom: 15px;
 }
 
-div#line {
-  width: 80%;
-  margin: 20px auto;
-  border: 1px #fff6dd inset;
-}
-
 p, li {
   font-size: 1.2em;
   padding-bottom: 14px;
   line-height: 1.4em;
+}
+
+ul {
+  list-style: none;
+}
+
+ol {
+  margin-left: 30px;
 }
 
 li {
@@ -66,4 +97,27 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+ol li {
+  margin-left: 15px;
+  color: #750e0e;
+}
+
+span.title {
+  font-style: italic;
+  color: #000;
+}
+
+aside ul {
+  list-style: circle;
+  color: #750e0e;
+}
+
+aside ul li {
+  margin-left: 20px;
+}
+
+.default {
+  color: #000;
 }
