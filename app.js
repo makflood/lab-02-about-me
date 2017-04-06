@@ -1,6 +1,7 @@
 'use strict';
 
 var correctCount = 0; // counter for correct answers
+var questionCount = 0; // counter for number of questions asked
 
 var user = prompt('Hey, what\'s your name?');
 console.log('user name:', user);
@@ -29,6 +30,7 @@ var correctResp;
 var wrongResp;
 
 for (var ask = 0; ask < ynQuestions.length; ask++) {
+  questionCount++;
   question = ynQuestions[ask][0];
   correctAns = ynQuestions[ask][1];
   correctResp = ynQuestions[ask][2];
@@ -56,6 +58,7 @@ console.log('correct y/n answers:', correctCount);
 
 var favNum = Math.round((Math.random() * 100));
 console.log('my favorite number is:', favNum);
+questionCount++;
 
 var isNotDone = true;
 var message;
@@ -104,6 +107,7 @@ console.log('current correct answers:', correctCount);
 // userAns defined above
 // message defined above
 var possibleAns = ['Canada', 'Mexico', 'France', 'England', 'Wales', 'Scotland'];
+questionCount++;
 isNotDone = true; // isNotDone defined above
 
 for (var guess = 6; guess >= 0 && isNotDone; guess--) {
@@ -157,4 +161,13 @@ console.log('current correct answers:', correctCount);
 
 // INFORM USER OF SCORE
 
-alert();
+message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + printUser + '!';
+if (correctCount === questionCount) {
+  message += 'Great job!';
+} else if (correctCount === questionCount - 1) {
+  message += 'So close, better luck next time!';
+} else {
+  message += 'Better luck next time.';
+}
+
+alert(message);
