@@ -2,7 +2,7 @@
 
 var correctCount = 0; // counter for correct answers
 var questionCount = 0; // counter for number of questions asked
-
+function userName(){
 var user = prompt('Hey, what\'s your name?');
 console.log('user name:', user);
 var hasName = user != null && user != '';
@@ -13,10 +13,15 @@ if (hasName) {
   printUser = 'nameless one';
 }
 alert('Hello, ' + printUser + '. I\'m going to ask some questions about me, try and get them all right!');
+return printUser;
+}
+
+var user = userName();
 
 //YES AND NO QUESTIONS
 
 // yes/no question, correct answer, response to correct answer, response to wrong answer
+function askQuestions(){
 var ynQuestions = [['Do I live in Chicago?', 'N', 'Right, I actually live in Seattle.', 'Nope, I call Seattle my home.'],
                    ['Do I have any pets?', 'Y', 'I have two cats, in fact.', 'No, well I guess my two cats own me...'],
                    ['Am I a blackbelt in karate?', 'N', 'That is correct. No karate, just know kenjutsu.', 'I don\'t know any karate, but I do know kenjutsu.'],
@@ -52,10 +57,14 @@ for (var ask = 0; ask < ynQuestions.length; ask++) {
 }
 console.log('correct y/n answers:', correctCount);
 
+}
+
+askQuestions();
 // GUESS THE NUMBER QUESTIONS
 
 // userAns defined above
-
+function guessNumber(){
+var userAns;
 var favNum = Math.round((Math.random() * 100));
 console.log('my favorite number is:', favNum);
 questionCount++;
@@ -102,13 +111,19 @@ for (var guess = 3; guess >= 0 && isNotDone; guess--) {
 
 console.log('current correct answers:', correctCount);
 
+}
+ guessNumber();
+
 // MULTIPLE ANSWER QUESTIONS
 
 // userAns defined above
 // message defined above
+function guessCountry(){
+var userAns;
+var message;
 var possibleAns = ['Canada', 'Mexico', 'France', 'England', 'Wales', 'Scotland'];
 questionCount++;
-isNotDone = true; // isNotDone defined above
+var isNotDone = true; // isNotDone defined above
 
 for (var guess = 6; guess >= 0 && isNotDone; guess--) {
   if (guess === 6) {
@@ -158,10 +173,12 @@ for (var guess = 6; guess >= 0 && isNotDone; guess--) {
   }
 }
 console.log('current correct answers:', correctCount);
-
+}
+guessCountry();
 // INFORM USER OF SCORE
+function userMessage(name){
 
-message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + printUser + '! ';
+var message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + name + '! ';
 if (correctCount === questionCount) {
   message += 'Great job!';
 } else if (correctCount === questionCount - 1) {
@@ -171,3 +188,5 @@ if (correctCount === questionCount) {
 }
 
 alert(message);
+}
+userMessage(user);
