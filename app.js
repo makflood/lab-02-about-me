@@ -23,11 +23,11 @@ var user = userName();
 
 function askQuestions(){
   // yes/no question, correct answer, response to correct answer, response to wrong answer
-  var ynQuestions = [['Do I live in Chicago?', 'N', 'Right, I actually live in Seattle.', 'Nope, I call Seattle my home.'],
-                    ['Do I have any pets?', 'Y', 'I have two cats, in fact.', 'No, well I guess my two cats own me...'],
-                    ['Am I a blackbelt in karate?', 'N', 'That is correct. No karate, just know kenjutsu.', 'I don\'t know any karate, but I do know kenjutsu.'],
-                    ['Did I write a thesis about the rearrangement of a platinocyclobutane?', 'Y', 'Yep, watched atoms moving around on a screen.', 'Wrong. And yes, that is a word.'],
-                    ['Am I Megan?', 'Y', 'Yep, that\'s my name!', 'Seriously?']];
+  var ynQuestions = [['Do I live in Chicago?', 'NO', 'Right, I actually live in Seattle.', 'Nope, I call Seattle my home.'],
+                    ['Do I have any pets?', 'YES', 'I have two cats, in fact.', 'No, well I guess my two cats own me...'],
+                    ['Am I a blackbelt in karate?', 'NO', 'That is correct. No karate, just know kenjutsu.', 'I don\'t know any karate, but I do know kenjutsu.'],
+                    ['Did I write a thesis about the rearrangement of a platinocyclobutane?', 'YES', 'Yep, watched atoms moving around on a screen.', 'Wrong. And yes, that is a word.'],
+                    ['Am I Megan?', 'YES', 'Yep, that\'s my name!', 'Seriously?']];
 
   var userAns;
   var question;
@@ -45,7 +45,7 @@ function askQuestions(){
       userAns = prompt(question);
       if (typeof userAns === 'string') {
         userAns = userAns.toUpperCase().trim();
-        userAns = userAns.charAt(0) === correctAns.charAt(0);
+        userAns = userAns === correctAns || userAns === correctAns[0];
       }
       console.log(question, 'user correct:', userAns);
     } while (typeof userAns != 'boolean')
@@ -75,14 +75,18 @@ function guessNumber(){
 
   for (var guess = 3; guess >= 0 && isNotDone; guess--) {
 
-    userAns = prompt('Guess my favorite number!');
-    console.log('user gueses:',userAns);
-    if (isNaN(userAns)) {
-      alert('That\'s not a number...')
+    if (guess === 3) {
+      userAns = prompt('Guess my favorite number!');
     } else {
-      userAns = parseInt(userAns);
-      isNotDone = userAns != favNum;
+      userAns = prompt('What\'s another guess?');
+    }
+    console.log('user gueses:',userAns);
+    userAns = parseInt(userAns);
 
+    if (isNaN(userAns)) {
+      message = 'That\'s not a number...';
+    } else {
+      isNotDone = userAns != favNum;
       if (isNotDone) {
         message = 'No, that number is too ';
         if (userAns > favNum) {
@@ -90,24 +94,24 @@ function guessNumber(){
         } else {
           message += 'small.';
         }
-        if (guess != 0) {
-          message += '\nOnly ' + guess + ' ';
-          if (guess != 1) {
-            message += 'guesses remain.';
-          } else {
-            message += 'guess remains.';
-          }
-        } else {
-          message += '\nToo bad, all out of guesses.\nIt was ' + favNum + '.';
-        }
-        alert(message);
-
       } else {
-        alert('Yay! You guessed right!');
+        message = 'Yay! You guessed right!';
         correctCount++;
       }
-
     }
+
+    if (guess != 0 && isNotDone) {
+      message += '\nOnly ' + guess + ' ';
+      if (guess != 1) {
+        message += 'guesses remain.';
+      } else {
+        message += 'guess remains.';
+      }
+    } else if (isNotDone) {
+      message += '\nToo bad, all out of guesses.\nIt was ' + favNum + '.';
+    }
+    alert(message);
+
   }
 
   console.log('current correct answers:', correctCount);
@@ -123,7 +127,9 @@ function guessCountry(){
   var message;
   var possibleAns = ['Canada', 'Mexico', 'France', 'England', 'Wales', 'Scotland'];
   questionCount++;
-  var isNotDone = true; // isNotDone defined above
+  var isNotDone = true;
+  var i;
+  var add;
 
   for (var guess = 6; guess >= 0 && isNotDone; guess--) {
     if (guess === 6) {
@@ -132,47 +138,40 @@ function guessCountry(){
       userAns = prompt('What\'s another guess?');
     }
     console.log('user country guess:', userAns);
+
     if (userAns != null && userAns != '') {
       userAns = userAns.toUpperCase().trim();
-      for (var comp = 0; comp < possibleAns.length; comp++) {
-        if (possibleAns[comp].toUpperCase() === userAns) {
+      for (i = 0; i < possibleAns.length; i++) {
+        if (possibleAns[i].toUpperCase() === userAns) {
           isNotDone = false;
-          message = 'Yep, you got one.\n I have been to ' + possibleAns[0];
-          for (var add = 1; add < possibleAns.length; add++) {
-            message += ', ' + possibleAns[add];
-          }
-          message += '.';
-          alert(message);
+          message = 'Yep, you got one.\n I have been to ' + possibleAns.join(', ') + ',';
+          i = possibleAns.length;
           correctCount++;
         }
       }
       if (isNotDone) {
         message = 'Nope, that isn\'t one.';
-        if (guess != 0) {
-          message += '\nOnly ' + guess + ' ';
-          if (guess != 1) {
-            message += 'guesses remain.';
-          } else {
-            message += 'guess remains.';
-          }
-        } else {
-          message += '\nToo bad, all out of guesses.\n I have been to ' + possibleAns[0];
-          for (var add = 1; add < possibleAns.length; add++) {
-            message += ', ';
-            if (add === possibleAns.length - 1) {
-              message += 'and ';
-            }
-            message += possibleAns[add];
-          }
-          message += '.';
-        }
-        alert(message);
       }
     } else {
-      alert('You didn\'t answer the question...');
+      message = 'You didn\'t answer the question...';
     }
+
+    if (guess != 0 && isNotDone) {
+      message += '\nOnly ' + guess + ' ';
+      if (guess != 1) {
+        message += 'guesses remain.';
+      } else {
+        message += 'guess remains.';
+      }
+    } else if (isNotDone) {
+      message += '\nToo bad, all out of guesses.\nI have been to ' + possibleAns.join(', ') + '.';
+    }
+    alert(message);
+
   }
+
   console.log('current correct answers:', correctCount);
+
 }
 
 guessCountry();
@@ -183,8 +182,8 @@ function userMessage(name){
 
   var message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + name + '! ';
   if (correctCount === questionCount) {
-    message += 'Great job!';
-  } else if (correctCount === questionCount - 1) {
+    message += 'Excellent job!';
+  } else if (correctCount >= questionCount - 2) {
     message += 'So close, better luck next time!';
   } else {
     message += 'Better luck next time.';
