@@ -1,21 +1,25 @@
 * {
   font-weight: normal;
+  width: 100%;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: #750e0e url('seigaiha.png') fixed;
+  background: #750e0e url('seigaiha.png') fixed; /* Background pattern from Subtle Patterns */
   font-family: "Book Antiqua", Palatino, serif;
 }
 
-div#wrapper {
+#wrapper {
   width: 840px;
   max-width: 80%;
   margin: 30px auto;
   padding: 20px;
   background: rgba(255,253,221,.75);
   border-radius: 15px;
+  border-bottom-left-radius: 70px;
+  position: relative;
 }
 
 section {
@@ -28,6 +32,7 @@ aside {
   margin: 0 20px 8px;
   background: rgba(255,246,221,.5);
   box-shadow: 2px 2px 3px #750e0e;
+  width: auto;
 }
 
 .right {
@@ -38,11 +43,11 @@ aside {
   float: left;
 }
 
-.clear {
+.clear-fix {
   clear: both;
 }
 
-div#line {
+#line {
   width: 80%;
   margin: 20px auto;
   border: 1px #fff6dd inset;
@@ -77,14 +82,17 @@ ul {
 
 ol {
   margin-left: 30px;
+  width: auto;
 }
 
 li {
   margin-left: 10px;
+  width: auto;
 }
 
 li img {
   height: 1.2em;
+  width: auto;
   margin: 5px;
   vertical-align: -35%;
 }
@@ -116,6 +124,27 @@ aside ul {
 
 aside ul li {
   margin-left: 20px;
+}
+
+#copyright {
+  font-size: .73em;
+  margin-top: 15px;
+  margin-left: 115px;
+  width: auto;
+}
+
+#circle {
+  background: #750e0e;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  bottom: 20px;
+  border-radius: 50px;
+}
+
+#copyright li {
+  display: inline;
+  margin-right: 15px;
 }
 
 .default {
