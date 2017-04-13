@@ -3,6 +3,8 @@
 var correctCount = 0; // counter for correct answers
 var questionCount = 0; // counter for number of questions asked
 
+var questionElements = document.querySelectorAll('ol li');
+
 function userName(){
   var user = prompt('Hey, what\'s your name?');
   console.log('user name:', user);
@@ -48,7 +50,8 @@ function askQuestions(){
         userAns = userAns === correctAns || userAns === correctAns[0];
       }
       console.log(question, 'user correct:', userAns);
-    } while (typeof userAns != 'boolean')
+    } while (typeof userAns != 'boolean');
+    questionElements[ask].innerHTML += '<span class="answer">' + userAns + '</span>';
     if (userAns) {
       alert(correctResp);
       correctCount++;
@@ -114,6 +117,8 @@ function guessNumber(){
 
   }
 
+  questionElements[questionCount-1].innerHTML += '<span class="answer">' + userAns + '</span>';
+
   console.log('current correct answers:', correctCount);
 
 }
@@ -129,7 +134,6 @@ function guessCountry(){
   questionCount++;
   var isNotDone = true;
   var i;
-  var add;
 
   for (var guess = 6; guess >= 0 && isNotDone; guess--) {
     if (guess === 6) {
@@ -169,7 +173,8 @@ function guessCountry(){
     alert(message);
 
   }
-
+  questionElements[questionCount-1].innerHTML += '<span class="answer">' + userAns + '</span>';
+  
   console.log('current correct answers:', correctCount);
 
 }

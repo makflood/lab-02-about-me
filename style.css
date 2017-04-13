@@ -53,6 +53,24 @@ aside {
   border: 1px #fff6dd inset;
 }
 
+button {
+  color: #750e0e;
+  font-family: Candara, "Trebuchet MS", sans-serif;
+  font-size: 2em;
+  line-height: 1em;
+  border-radius: 15px;
+  border: none;
+  background: rgba(255,246,221,.5);
+  padding: 20px;
+  width: 80%;
+  margin: 0 10% 15px;
+}
+
+button:hover {
+  background: #750e0e;
+  color: #EEDCC3;
+}
+
 h1, h2 {
   color: #750e0e;
   font-family: Candara, "Trebuchet MS", sans-serif;
@@ -107,6 +125,11 @@ a:hover {
   text-decoration: underline;
 }
 
+h2 a {
+  font-style: normal;
+  margin-left: 120px;
+}
+
 ol li {
   margin-left: 15px;
   color: #750e0e;
@@ -124,6 +147,15 @@ aside ul {
 
 aside ul li {
   margin-left: 20px;
+}
+
+span.answer {
+  color: #750e0e;
+  padding-left: 15px;
+}
+
+#bottom-page {
+  height: 40px;
 }
 
 #copyright {
