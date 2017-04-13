@@ -58,8 +58,10 @@ window.onload = function() {
       if (compAns) {
         alert(correctResp);
         correctCount++;
+        questionElements[ask].innerHTML += '<span class="correct">&#9711;</span>';
       } else {
         alert(wrongResp);
+        questionElements[ask].innerHTML += '<span class="wrong">&#9747;</span>';
       }
     }
     console.log('correct y/n answers:', correctCount);
@@ -123,6 +125,11 @@ window.onload = function() {
     }
 
     questionElements[questionCount-1].innerHTML += '<span class="answer">' + userAns + '</span>';
+    if (isNotDone) {
+      questionElements[questionCount-1].innerHTML += '<span class="wrong">&#9747;</span>';
+    } else {
+      questionElements[questionCount-1].innerHTML += '<span class="correct">&#9711;</span>';
+    }
 
     console.log('current correct answers:', correctCount);
 
@@ -181,6 +188,11 @@ window.onload = function() {
 
     }
     questionElements[questionCount-1].innerHTML += '<span class="answer">' + userAns + '</span>';
+    if (isNotDone) {
+      questionElements[questionCount-1].innerHTML += '<span class="wrong">&#9747;</span>';
+    } else {
+      questionElements[questionCount-1].innerHTML += '<span class="correct">&#9711;</span>';
+    }
 
     console.log('current correct answers:', correctCount);
 

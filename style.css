@@ -150,8 +150,20 @@ aside ul li {
 }
 
 span.answer {
-  color: #750e0e;
   padding-left: 15px;
+}
+
+.correct, .wrong {
+  padding-left: 15px;
+  font-weight: 800;
+}
+
+.correct {
+  color: #0ba015;
+}
+
+.wrong {
+  color: #e50b0b;
 }
 
 #score-box {
