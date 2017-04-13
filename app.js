@@ -32,6 +32,7 @@ function askQuestions(){
                     ['Am I Megan?', 'YES', 'Yep, that\'s my name!', 'Seriously?']];
 
   var userAns;
+  var compAns;
   var question;
   var correctAns;
   var correctResp;
@@ -45,14 +46,15 @@ function askQuestions(){
     wrongResp = ynQuestions[ask][3];
     do {
       userAns = prompt(question);
-      if (typeof userAns === 'string') {
-        userAns = userAns.toUpperCase().trim();
-        userAns = userAns === correctAns || userAns === correctAns[0];
+      compAns = userAns;
+      if (typeof compAns === 'string') {
+        compAns = compAns.toUpperCase().trim();
+        compAns = compAns === correctAns || compAns === correctAns[0];
       }
-      console.log(question, 'user correct:', userAns);
-    } while (typeof userAns != 'boolean');
+      console.log(question, 'user correct:', compAns);
+    } while (typeof compAns != 'boolean');
     questionElements[ask].innerHTML += '<span class="answer">' + userAns + '</span>';
-    if (userAns) {
+    if (compAns) {
       alert(correctResp);
       correctCount++;
     } else {
@@ -69,6 +71,7 @@ askQuestions();
 
 function guessNumber(){
   var userAns;
+  var compAns;
   var favNum = Math.round((Math.random() * 100));
   console.log('my favorite number is:', favNum);
   questionCount++;
@@ -84,15 +87,16 @@ function guessNumber(){
       userAns = prompt('What\'s another guess?');
     }
     console.log('user gueses:',userAns);
-    userAns = parseInt(userAns);
+    compAns = userAns;
+    compAns = parseInt(compAns);
 
-    if (isNaN(userAns)) {
+    if (isNaN(compAns)) {
       message = 'That\'s not a number...';
     } else {
-      isNotDone = userAns != favNum;
+      isNotDone = compAns != favNum;
       if (isNotDone) {
         message = 'No, that number is too ';
-        if (userAns > favNum) {
+        if (compAns > favNum) {
           message += 'large.';
         } else {
           message += 'small.';
@@ -129,6 +133,7 @@ guessNumber();
 
 function guessCountry(){
   var userAns;
+  var compAns;
   var message;
   var possibleAns = ['Canada', 'Mexico', 'France', 'England', 'Wales', 'Scotland'];
   questionCount++;
@@ -142,11 +147,12 @@ function guessCountry(){
       userAns = prompt('What\'s another guess?');
     }
     console.log('user country guess:', userAns);
+    compAns = userAns;
 
-    if (userAns != null && userAns != '') {
-      userAns = userAns.toUpperCase().trim();
+    if (compAns != null && compAns != '') {
+      compAns = compAns.toUpperCase().trim();
       for (i = 0; i < possibleAns.length; i++) {
-        if (possibleAns[i].toUpperCase() === userAns) {
+        if (possibleAns[i].toUpperCase() === compAns) {
           isNotDone = false;
           message = 'Yep, you got one.\n I have been to ' + possibleAns.join(', ') + ',';
           i = possibleAns.length;
@@ -174,7 +180,7 @@ function guessCountry(){
 
   }
   questionElements[questionCount-1].innerHTML += '<span class="answer">' + userAns + '</span>';
-  
+
   console.log('current correct answers:', correctCount);
 
 }
@@ -184,8 +190,10 @@ guessCountry();
 // INFORM USER OF SCORE
 
 function userMessage(name){
+  alert('It\'s over!');
+  document.querySelector('.hide').style.display ='block';
 
-  var message = 'It\'s over! You got ' + correctCount + ' out of ' + questionCount + ' questions right, ' + name + '! ';
+  var message = 'You got <span class="num">' + correctCount + '</span> out of <span class="num">' + questionCount + '</span> questions right, ' + name + '! ';
   if (correctCount === questionCount) {
     message += 'Excellent job!';
   } else if (correctCount >= questionCount - 2) {
@@ -194,7 +202,8 @@ function userMessage(name){
     message += 'Better luck next time.';
   }
 
-  alert(message);
+  var printBox = document.getElementById('score-box');
+  printBox.innerHTML = '<p>' + message + '</p>';
 }
 
 userMessage(user);

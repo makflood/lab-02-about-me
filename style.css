@@ -154,6 +154,17 @@ span.answer {
   padding-left: 15px;
 }
 
+#score-box {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+#score-box .num {
+  color: #750e0e;
+  font-weight: bold;
+}
+
 #bottom-page {
   height: 40px;
 }
@@ -181,4 +192,8 @@ span.answer {
 
 .default {
   color: #000;
+}
+
+.hide {
+  display: none;
 }
