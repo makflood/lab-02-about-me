@@ -26,10 +26,16 @@ section {
   width: 45%;
 }
 
+@media (max-width: 585px) {
+  section {
+    width: 100%;
+  }
+}
+
 aside {
   border-radius: 15px;
   padding: 20px;
-  margin: 0 20px 8px;
+  margin: 0 20px 13px;
   background: rgba(255,246,221,.5);
   box-shadow: 2px 2px 3px #750e0e;
   width: auto;
@@ -41,6 +47,12 @@ aside {
 
 .left {
   float: left;
+}
+
+@media (max-width: 585px) {
+  .right, .left {
+    float: none;
+  }
 }
 
 .clear-fix {
@@ -149,6 +161,11 @@ aside ul li {
   margin-left: 20px;
 }
 
+.indent {
+  list-style: disc;
+  margin-left: 40px;
+}
+
 span.answer {
   padding-left: 15px;
 }
@@ -184,9 +201,18 @@ span.answer {
 #copyright {
   font-size: .73em;
   margin-top: 15px;
-  margin-left: 115px;
+  padding-left: 115px;
   width: auto;
 }
+
+@media (max-width: 585px) {
+  #copyright {
+    height: 100px;
+    display: table-cell;
+    vertical-align: bottom;
+  }
+}
+
 
 #circle {
   background: #750e0e;
