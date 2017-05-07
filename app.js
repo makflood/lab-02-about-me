@@ -4,23 +4,30 @@ window.onload = function() {
   var correctCount = 0; // counter for correct answers
   var questionCount = 0; // counter for number of questions asked
 
-  var questionElements = document.querySelectorAll('ol li');
+  var questionBox = document.getElementById('question-box');
+  // var questionElements = document.querySelectorAll('ol li');
+
+  var user;
 
   function userName(){
-    var user = prompt('Hey, what\'s your name?');
-    console.log('user name:', user);
-    var hasName = user != null && user != '';
-    var printUser;
-    if (hasName) {
-      printUser = user;
-    } else {
-      printUser = 'nameless one';
+    var userPrompt = document.createElement('p');
+    questionBox.appendChild(userPrompt);
+    userPrompt.innerHTML = 'Hey, what\'s your name?<form><input type="text" name="inputName"></input><button type="submit">OK</button></form>';
+    document.querySelector('form').addEventListener('submit', handleNameSubmit);
+
+    function handleNameSubmit(e) {
+      e.preventDefault();
+      user = e.target.inputName.value;
+      console.log('user name:', user);
+      var hasName = user != '';
+      if (!hasName) {
+        user = 'nameless one';
+      }
+      userPrompt.innerHTML = 'Hello, ' + user + '. I\'m going to ask some questions about me, try and get them all right!';
     }
-    alert('Hello, ' + printUser + '. I\'m going to ask some questions about me, try and get them all right!');
-    return printUser;
   }
 
-  var user = userName();
+  userName();
 
   //YES AND NO QUESTIONS
 
@@ -68,7 +75,7 @@ window.onload = function() {
 
   }
 
-  askQuestions();
+  // askQuestions();
 
   // GUESS THE NUMBER QUESTIONS
 
@@ -135,7 +142,7 @@ window.onload = function() {
 
   }
 
-  guessNumber();
+  // guessNumber();
 
   // MULTIPLE ANSWER QUESTIONS
 
@@ -198,7 +205,7 @@ window.onload = function() {
 
   }
 
-  guessCountry();
+  // guessCountry();
 
   // INFORM USER OF SCORE
 
@@ -219,5 +226,5 @@ window.onload = function() {
     printBox.innerHTML = '<p>' + message + '</p>';
   }
 
-  userMessage(user);
+  // userMessage(user);
 };
